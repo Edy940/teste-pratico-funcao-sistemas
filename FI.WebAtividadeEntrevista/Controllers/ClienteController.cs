@@ -27,6 +27,11 @@ namespace WebAtividadeEntrevista.Controllers
         {
             BoCliente bo = new BoCliente();
             
+            if(!ValidadorCpf.ValidarCPF(model.CPF))
+            {
+                Response.StatusCode = 400;
+                return Json("CPF inválido");
+            }
             if (!this.ModelState.IsValid)
             {
                 List<string> erros = (from item in ModelState.Values
@@ -49,7 +54,8 @@ namespace WebAtividadeEntrevista.Controllers
                     Nacionalidade = model.Nacionalidade,
                     Nome = model.Nome,
                     Sobrenome = model.Sobrenome,
-                    Telefone = model.Telefone
+                    Telefone = model.Telefone,
+                    CPF = model.CPF
                 });
 
            
@@ -84,7 +90,8 @@ namespace WebAtividadeEntrevista.Controllers
                     Nacionalidade = model.Nacionalidade,
                     Nome = model.Nome,
                     Sobrenome = model.Sobrenome,
-                    Telefone = model.Telefone
+                    Telefone = model.Telefone,
+                    CPF = model.CPF
                 });
                                
                 return Json("Cadastro alterado com sucesso");

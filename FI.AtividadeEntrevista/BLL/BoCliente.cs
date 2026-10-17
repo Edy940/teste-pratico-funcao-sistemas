@@ -72,11 +72,12 @@ namespace FI.AtividadeEntrevista.BLL
         /// VerificaExistencia
         /// </summary>
         /// <param name="CPF"></param>
+        /// <param name="Id"></param>
         /// <returns></returns>
-        public bool VerificarExistencia(string CPF)
+        public bool VerificarExistencia(string CPF, long Id)
         {
             DAL.DaoCliente cli = new DAL.DaoCliente();
-            return cli.VerificarExistencia(CPF);
+            return cli.VerificarExistencia(CPF,Id);
         }
     }
 }

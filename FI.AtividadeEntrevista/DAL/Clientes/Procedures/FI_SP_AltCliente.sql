@@ -8,7 +8,9 @@
     @LOGRADOURO    VARCHAR (500),
     @EMAIL         VARCHAR (2079),
     @TELEFONE      VARCHAR (15),
-	@Id           BIGINT
+	@CPF		   VARCHAR(14),
+	@Id            BIGINT
+	
 AS
 BEGIN
 	UPDATE CLIENTES 
@@ -21,6 +23,8 @@ BEGIN
 		CIDADE = @CIDADE, 
 		LOGRADOURO = @LOGRADOURO, 
 		EMAIL = @EMAIL, 
-		TELEFONE = @TELEFONE
+		TELEFONE = @TELEFONE,
+		CPF = @CPF
+		
 	WHERE Id = @Id
 END
