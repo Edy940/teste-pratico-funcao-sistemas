@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace FI.WebAtividadeEntrevista.Models
+namespace WebAtividadeEntrevista.Models
 {
     /// <summary>
     /// Beneficiário do cliente
@@ -25,10 +24,5 @@ namespace FI.WebAtividadeEntrevista.Models
         /// </summary>
         [Required]
         public string Nome { get; set; }
-
-        /// <summary>
-        /// Beneficiários do cliente
-        /// </summary>
-        public List<BeneficiarioModel> Beneficiarios { get; set; }
     }
 }

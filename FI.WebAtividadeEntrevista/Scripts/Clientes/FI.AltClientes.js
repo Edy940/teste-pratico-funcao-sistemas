@@ -20,7 +20,7 @@ $(document).ready(function () {
         $.ajax({
             url: urlPost,
             method: "POST",
-            data: {
+            data: adicionarBeneficiariosAoEnvio({
                 "NOME": $(this).find("#Nome").val(),
                 "CEP": $(this).find("#CEP").val(),
                 "Email": $(this).find("#Email").val(),
@@ -31,7 +31,7 @@ $(document).ready(function () {
                 "Logradouro": $(this).find("#Logradouro").val(),
                 "Telefone": $(this).find("#Telefone").val(),
                 "CPF": $(this).find("#CPF").val()
-            },
+            }),
             error:
             function (r) {
                 if (r.status == 400)

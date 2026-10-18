@@ -1,0 +1,41 @@
+﻿<div id="modalBeneficiarios" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Beneficiários</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="IdBeneficiario" />
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="CPFBeneficiario">CPF:</label>
+                            <input type="text" class="form-control" id="CPFBeneficiario" placeholder="Ex.: 999.999.999-99" maxlength="14">
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label for="NomeBeneficiario">Nome:</label>
+                            <input type="text" class="form-control" id="NomeBeneficiario" placeholder="Ex.: Maria" maxlength="50">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label>&nbsp;</label>
+                        <button type="button" id="btnIncluirBeneficiario" class="btn btn-success btn-block">Incluir</button>
+                    </div>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>CPF</th>
+                            <th>Nome</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="gridBeneficiarios"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
