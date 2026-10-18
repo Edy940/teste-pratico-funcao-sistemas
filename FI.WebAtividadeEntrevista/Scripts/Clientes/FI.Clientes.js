@@ -1,5 +1,6 @@
 ﻿
 $(document).ready(function () {
+    $('#formCadastro #CPF').inputmask('999.999.999-99');
     $('#formCadastro').submit(function (e) {
         e.preventDefault();
         $.ajax({
@@ -14,7 +15,8 @@ $(document).ready(function () {
                 "Estado": $(this).find("#Estado").val(),
                 "Cidade": $(this).find("#Cidade").val(),
                 "Logradouro": $(this).find("#Logradouro").val(),
-                "Telefone": $(this).find("#Telefone").val()
+                "Telefone": $(this).find("#Telefone").val(),
+                "CPF": $(this).find("#CPF").val()
             },
             error:
             function (r) {
