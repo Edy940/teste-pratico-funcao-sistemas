@@ -33,6 +33,16 @@ namespace FI.AtividadeEntrevista.BLL
             int digito2 = resto < 2 ? 0 : 11 - resto;
 
             return cpf[9] - '0' == digito1 && cpf[10] - '0' == digito2;
+        }      
+        /// <summary>
+        /// Formata um CPF
+        /// </summary>
+        /// <param name="cpf">CPF a ser formatado</param>
+        /// <returns>CPF formatado</returns>
+        public static string FormatarCpf(string cpf)
+        {
+            string d = Regex.Replace(cpf, "[^0-9]", "");
+            return $"{d.Substring(0, 3)}.{d.Substring(3, 3)}.{d.Substring(6, 3)}-{d.Substring(9, 2)}";
         }
     }
 }

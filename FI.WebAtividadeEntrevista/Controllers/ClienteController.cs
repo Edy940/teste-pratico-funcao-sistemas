@@ -27,17 +27,20 @@ namespace WebAtividadeEntrevista.Controllers
         {
             BoCliente bo = new BoCliente();
 
+            if (!ValidadorCpf.ValidarCPF(model.CPF))
+            {
+                Response.StatusCode = 400;
+                return Json("CPF inválido");
+            }
+           
+            model.CPF = ValidadorCpf.FormatarCpf(model.CPF);
+            
             if (bo.VerificarExistencia(model.CPF, model.Id))
             {
                 Response.StatusCode = 400;
                 return Json("CPF já cadastrado");
             }
 
-            if (!ValidadorCpf.ValidarCPF(model.CPF))
-            {
-                Response.StatusCode = 400;
-                return Json("CPF inválido");
-            }
             if (!this.ModelState.IsValid)
             {
                 List<string> erros = (from item in ModelState.Values
@@ -74,7 +77,13 @@ namespace WebAtividadeEntrevista.Controllers
         {
             BoCliente bo = new BoCliente();
 
-            if(bo.VerificarExistencia(model.CPF, model.Id))
+            if (!ValidadorCpf.ValidarCPF(model.CPF))
+            {
+                Response.StatusCode = 400;
+                return Json("CPF inválido");
+            }
+
+            if (bo.VerificarExistencia(model.CPF, model.Id))
             {
                 Response.StatusCode = 400;
                 return Json("CPF já cadastrado");
