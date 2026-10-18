@@ -1,6 +1,6 @@
-# Teste Pr·tico - FunÁ„o Sistemas
+# Teste Pr√°tico - Fun√ß√£o Sistemas
 
-ImplementaÁ„o do campo CPF no cadastro de clientes e do cadastro de benefici·rios, sobre o projeto base fornecido pela FunÁ„o Sistemas.
+Implementa√ß√£o do campo CPF no cadastro de clientes e do cadastro de benefici√°rios, sobre o projeto base fornecido pela Fun√ß√£o Sistemas.
 
 ## Tecnologias
 
@@ -11,12 +11,12 @@ ImplementaÁ„o do campo CPF no cadastro de clientes e do cadastro de benefici·rio
 ## Como executar
 
 1. Abrir `FI.WebAtividadeEntrevista.sln` no Visual Studio 2022
-2. Restaurar os pacotes NuGet e recompilar a soluÁ„o
+2. Restaurar os pacotes NuGet e recompilar a solu√ß√£o
 3. Executar o projeto `FI.WebAtividadeEntrevista` (F5)
 
-O banco (`App_Data/BancoDeDados.mdf`) j· contÈm as alteraÁıes abaixo.
+O banco (`App_Data/BancoDeDados.mdf`) j√° cont√©m as altera√ß√µes abaixo.
 
-## AlteraÁıes no banco
+## Altera√ß√µes no banco
 
 ```sql
 ALTER TABLE CLIENTES
@@ -26,44 +26,44 @@ ALTER TABLE BENEFICIARIOS
 ALTER COLUMN CPF VARCHAR(14) NOT NULL;
 ```
 
-O CPF È gravado formatado (`000.000.000-00`). A coluna `CPF` de `BENEFICIARIOS` foi ajustada de 11 para 14 caracteres para manter o mesmo padr„o de `CLIENTES`.
+O CPF √© gravado formatado (`000.000.000-00`). A coluna `CPF` de `BENEFICIARIOS` foi ajustada de 11 para 14 caracteres para manter o mesmo padr√£o de `CLIENTES`.
 
 ## Procedures alteradas
 
-| Procedure | AlteraÁ„o |
+| Procedure | Altera√ß√£o |
 |---|---|
-| `FI_SP_IncClienteV2` | Inclus„o do par‚metro `@CPF` |
-| `FI_SP_AltCliente` | Inclus„o do par‚metro `@CPF` |
+| `FI_SP_IncClienteV2` | Inclus√£o do par√¢metro `@CPF` |
+| `FI_SP_AltCliente` | Inclus√£o do par√¢metro `@CPF` |
 | `FI_SP_ConsCliente` | Retorno da coluna `CPF` |
-| `FI_SP_VerificaCliente` | Novo par‚metro `@ID`, para ignorar o prÛprio cliente na alteraÁ„o |
-| `FI_SP_AltBenef` | Par‚metro `@CPF` ajustado para 14 caracteres |
+| `FI_SP_VerificaCliente` | Novo par√¢metro `@ID`, para ignorar o pr√≥prio cliente na altera√ß√£o |
+| `FI_SP_AltBenef` | Par√¢metro `@CPF` ajustado para 14 caracteres |
 
 ## Procedures criadas
 
-| Procedure | FunÁ„o |
+| Procedure | Fun√ß√£o |
 |---|---|
-| `FI_SP_IncBenef` | Inclui um benefici·rio e retorna o Id gerado |
-| `FI_SP_ConsBenef` | Lista os benefici·rios de um cliente |
-| `FI_SP_DelBenef` | Exclui um benefici·rio |
-| `FI_SP_VerificaBenef` | Verifica se o CPF j· est· cadastrado como benefici·rio do cliente (disponÌvel, n„o utilizada no fluxo atual) |
+| `FI_SP_IncBenef` | Inclui um benefici√°rio e retorna o Id gerado |
+| `FI_SP_ConsBenef` | Lista os benefici√°rios de um cliente |
+| `FI_SP_DelBenef` | Exclui um benefici√°rio |
+| `FI_SP_VerificaBenef` | Verifica se o CPF j√° est√° cadastrado como benefici√°rio do cliente (dispon√≠vel, n√£o utilizada no fluxo atual) |
 
-Os scripts est„o na pasta `Procedures` de cada entidade, usando `CREATE OR ALTER`.
+Os scripts est√£o na pasta `Procedures` de cada entidade, usando `CREATE OR ALTER`.
 
 ## Regras implementadas
 
 ### Cliente
 
-- CPF obrigatÛrio, com m·scara `999.999.999-99`
-- ValidaÁ„o dos dÌgitos verificadores no backend (`BLL/ValidadorCpf.cs`), reaproveitada para clientes e benefici·rios
-- Dois clientes n„o podem ter o mesmo CPF; a verificaÁ„o È feita no banco, pelo mÈtodo `VerificarExistencia` do `BoCliente`
+- CPF obrigat√≥rio, com m√°scara `999.999.999-99`
+- Valida√ß√£o dos d√≠gitos verificadores no backend (`BLL/ValidadorCpf.cs`), reaproveitada para clientes e benefici√°rios
+- Dois clientes n√£o podem ter o mesmo CPF; a verifica√ß√£o √© feita no banco, pelo m√©todo `VerificarExistencia` do `BoCliente`
 
-### Benefici·rios
+### Benefici√°rios
 
-- Bot„o **Benefici·rios** na tela de cliente, que abre um pop-up com CPF, nome e grid com as opÁıes Alterar e Excluir
-- CPF com m·scara e validaÁ„o dos dÌgitos verificadores
-- O mesmo cliente n„o pode ter dois benefici·rios com o mesmo CPF; a verificaÁ„o È feita na lista, no JavaScript e no controller
-- As inclusıes, alteraÁıes e exclusıes ficam em memÛria na tela e sÛ s„o gravadas no banco ao clicar em **Salvar** no cadastro do cliente
-- No servidor, a lista enviada È validada antes de gravar o cliente e comparada com a lista do banco: os benefici·rios removidos s„o excluÌdos, os existentes s„o alterados e os novos s„o incluÌdos
+- Bot√£o **Benefici√°rios** na tela de cliente, que abre um pop-up com CPF, nome e grid com as op√ß√µes Alterar e Excluir
+- CPF com m√°scara e valida√ß√£o dos d√≠gitos verificadores
+- O mesmo cliente n√£o pode ter dois benefici√°rios com o mesmo CPF; a verifica√ß√£o √© feita na lista, no JavaScript e no controller
+- As inclus√µes, altera√ß√µes e exclus√µes ficam em mem√≥ria na tela e s√≥ s√£o gravadas no banco ao clicar em **Salvar** no cadastro do cliente
+- No servidor, a lista enviada √© validada antes de gravar o cliente e comparada com a lista do banco: os benefici√°rios removidos s√£o exclu√≠dos, os existentes s√£o alterados e os novos s√£o inclu√≠dos
 
 ## Estrutura
 
@@ -74,10 +74,10 @@ Os scripts est„o na pasta `Procedures` de cada entidade, usando `CREATE OR ALTER
 | BLL | `BoBeneficiario.cs`, `ValidadorCpf.cs` |
 | Web | `BeneficiarioModel.cs`, `Views/Cliente/ModalBeneficiarios.cshtml`, `Scripts/Clientes/FI.Beneficiarios.js` |
 
-## ObservaÁıes
+## Observa√ß√µes
 
-- O arquivo `FI_SP_IncCliente.sql` define a procedure `FI_SP_IncClienteV2`, que È a utilizada pelo `DaoCliente`.
-- A procedure `FI_SP_IncCliente`, existente no banco, n„o È utilizada pelo sistema e foi mantida sem alteraÁ„o.
-- As procedures `FI_SP_VerificaCliente` e `FI_SP_AltBenef` existiam apenas no banco e foram adicionadas ‡ soluÁ„o por terem sido alteradas.
-- A m·scara de CPF utiliza o pacote NuGet Inputmask.
-- Caso alteraÁıes de JavaScript n„o apareÁam no navegador, limpe o cache (Ctrl+F5).
+- O arquivo `FI_SP_IncCliente.sql` define a procedure `FI_SP_IncClienteV2`, que √© a utilizada pelo `DaoCliente`.
+- A procedure `FI_SP_IncCliente`, existente no banco, n√£o √© utilizada pelo sistema e foi mantida sem altera√ß√£o.
+- As procedures `FI_SP_VerificaCliente` e `FI_SP_AltBenef` existiam apenas no banco e foram adicionadas √† solu√ß√£o por terem sido alteradas.
+- A m√°scara de CPF utiliza o pacote NuGet Inputmask.
+- Caso altera√ß√µes de JavaScript n√£o apare√ßam no navegador, limpe o cache (Ctrl+F5).
