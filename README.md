@@ -24,7 +24,11 @@ ADD CPF VARCHAR(14) NOT NULL;
 
 ALTER TABLE BENEFICIARIOS
 ALTER COLUMN CPF VARCHAR(14) NOT NULL;
+
+CREATE UNIQUE INDEX UX_CLIENTES_CPF ON CLIENTES (CPF);
+CREATE UNIQUE INDEX UX_BENEFICIARIOS_CLIENTE_CPF ON BENEFICIARIOS (IDCLIENTE, CPF);
 ```
+Os índices únicos garantem no próprio banco que não haja CPF repetido entre clientes, nem beneficiários com o mesmo CPF para o mesmo cliente.
 
 O CPF é gravado formatado (`000.000.000-00`). A coluna `CPF` de `BENEFICIARIOS` foi ajustada de 11 para 14 caracteres para manter o mesmo padrão de `CLIENTES`.
 
